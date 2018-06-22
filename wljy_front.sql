@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50528
 File Encoding         : 65001
 
-Date: 2018-06-18 20:16:40
+Date: 2018-06-22 18:12:44
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -59,7 +59,7 @@ CREATE TABLE `tb_comment` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `topic_id` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '主题id',
   `topic_type` varchar(40) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '主题类型',
-  `comment_content` varchar(40) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '评论内容',
+  `content` varchar(40) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '评论内容',
   `user_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '用户ID',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
@@ -68,7 +68,7 @@ CREATE TABLE `tb_comment` (
 -- Records of tb_comment
 -- ----------------------------
 INSERT INTO `tb_comment` VALUES ('1', '1', '3', '这篇文章好像还不错哦！', '1');
-INSERT INTO `tb_comment` VALUES ('2', '2', '3', '我好喜欢这篇文章呀', '2');
+INSERT INTO `tb_comment` VALUES ('2', '1', '3', '啦啦啦啦啦啦', '2');
 
 -- ----------------------------
 -- Table structure for tb_liveslist
@@ -164,7 +164,7 @@ CREATE TABLE `tb_reply` (
   `comment_id` int(11) DEFAULT NULL COMMENT '评论id',
   `reply_id` int(11) DEFAULT NULL COMMENT '回复目标id',
   `reply_type` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '回复类型',
-  `reply_content` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '回复内容',
+  `content` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '回复内容',
   `user_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '回复用户id',
   `to_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '目标用户id',
   PRIMARY KEY (`id`)
@@ -175,6 +175,8 @@ CREATE TABLE `tb_reply` (
 -- ----------------------------
 INSERT INTO `tb_reply` VALUES ('1', '1', null, null, '你真的觉得这个文章不错嘛', '3', '1');
 INSERT INTO `tb_reply` VALUES ('2', '2', null, null, 'adasdadad', '3', '1');
+INSERT INTO `tb_reply` VALUES ('3', '2', null, null, '啊实打实大苏打', '2', '1');
+INSERT INTO `tb_reply` VALUES ('4', '1', null, null, '啊啊啊啊啊啊啊', '1', '2');
 
 -- ----------------------------
 -- Table structure for tb_users
