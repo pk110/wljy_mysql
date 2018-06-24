@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50528
 File Encoding         : 65001
 
-Date: 2018-06-22 18:12:44
+Date: 2018-06-24 11:29:52
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -61,14 +61,15 @@ CREATE TABLE `tb_comment` (
   `topic_type` varchar(40) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '主题类型',
   `content` varchar(40) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '评论内容',
   `user_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '用户ID',
+  `time` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of tb_comment
 -- ----------------------------
-INSERT INTO `tb_comment` VALUES ('1', '1', '3', '这篇文章好像还不错哦！', '1');
-INSERT INTO `tb_comment` VALUES ('2', '1', '3', '啦啦啦啦啦啦', '2');
+INSERT INTO `tb_comment` VALUES ('1', '1', '3', '这篇文章好像还不错哦！', '1', '2018-07-12 00:00:00');
+INSERT INTO `tb_comment` VALUES ('2', '1', '3', '啦啦啦啦啦啦', '2', '2016-07-12 00:00:00');
 
 -- ----------------------------
 -- Table structure for tb_liveslist
@@ -116,28 +117,6 @@ INSERT INTO `tb_newslist` VALUES ('1', '彭老大', 'https://ss2.bdstatic.com/70
 INSERT INTO `tb_newslist` VALUES ('2', '干干干', 'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=4277421151,989647164&fm=27&gp=0.jpg', '冲冲冲阿萨大大撒旦阿瑟东阿瑟东阿迪斯阿斯顿阿斯顿', 'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2688537749,3377948295&fm=27&gp=0.jpg', '2015-08-07 00:00:00', '创业是创业者对自己拥有的资源或通过努力对能够拥有的资源进行优化整合，从而创造出更大经济或社会价值的过程。创业是一种劳动方式，是一种需要创业者运营、组织、运用服务、技术、器物作业的思考、推理和判断的行为。根据杰夫里·提蒙斯（Jeffry A.Timmons）所著的创业教育领域的经典教科书《创业创造》（New Venture Creation）的定义：创业是一种思考、推理结合运气的行为方式，它为运气带来的机会所驱动，需要在方法上全盘考虑并拥有和谐的领导能力。\r\n创业作为一个商业领域，创业以点滴成就点滴喜悦致力于理解创造新事物（新产品，新市场，新生产过程或原材料，组织现有技术的新方法）的机会，如何出现并被特定个体发现或创造，这些人如何运用各种方法去利用和开发它们，然后产生各种结果。\r\n创业是一个人发现了一个商机并加以实际行动转化为具体的社会形态，获得利益，实现价值。\r\n科尔（Cole）提出，把创业定义为:发起、维持和发展以利润为导向的企业的有目的性的行为。', '3');
 INSERT INTO `tb_newslist` VALUES ('3', '阿斯达', 'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=580198311,1767386831&fm=27&gp=0.jpg', '阿斯达大所大所大大所', 'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2688537749,3377948295&fm=27&gp=0.jpg', '2016-08-09 00:00:00', '阿斯达大所大所大所大所大所大所大所大所大所多撒多', '3');
 INSERT INTO `tb_newslist` VALUES ('4', 'eqe', 'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=580198311,1767386831&fm=27&gp=0.jpg', 'add撒多阿萨德奥迪', 'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2688537749,3377948295&fm=27&gp=0.jpg', '2018-06-12 10:26:40', 'dasdadasdadasd', '3');
-
--- ----------------------------
--- Table structure for tb_newslist_detail
--- ----------------------------
-DROP TABLE IF EXISTS `tb_newslist_detail`;
-CREATE TABLE `tb_newslist_detail` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `news_id` int(11) DEFAULT NULL COMMENT '文章id',
-  `user_id` int(11) DEFAULT NULL COMMENT '用户id',
-  `thumbsUp` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '点赞',
-  `attention` varchar(2550) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '关注',
-  `comments` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '评论',
-  PRIMARY KEY (`id`),
-  KEY `news_id` (`news_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
-
--- ----------------------------
--- Records of tb_newslist_detail
--- ----------------------------
-INSERT INTO `tb_newslist_detail` VALUES ('1', '1', '1', '100', '1000', '真的牛逼');
-INSERT INTO `tb_newslist_detail` VALUES ('2', '2', '2', '80', '9999', '哇 好棒啊');
-INSERT INTO `tb_newslist_detail` VALUES ('3', '1', '3', '20', '888', 'sghgjgjhgj');
 
 -- ----------------------------
 -- Table structure for tb_notice
@@ -211,7 +190,7 @@ CREATE TABLE `tb_vedioeslist` (
   `specialMoney` float DEFAULT NULL,
   `time` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of tb_vedioeslist
@@ -220,6 +199,7 @@ INSERT INTO `tb_vedioeslist` VALUES ('1', 'https://ss0.bdstatic.com/70cFvHSh_Q1Y
 INSERT INTO `tb_vedioeslist` VALUES ('2', 'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2402531608,4087629920&fm=27&gp=0.jpg', '美女直播不容错过', '12312', '177', '0', '2019-07-02 00:00:00');
 INSERT INTO `tb_vedioeslist` VALUES ('3', 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2558609194,1942934053&fm=27&gp=0.jpg', '动漫电影', '123', '126', '12', '2012-02-12 12:00:00');
 INSERT INTO `tb_vedioeslist` VALUES ('4', 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2433433105,3188102416&fm=27&gp=0.jpg', '哈哈哈', '6545', '453', '234', '2048-08-02 00:00:00');
+INSERT INTO `tb_vedioeslist` VALUES ('5', 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2558609194,1942934053&fm=27&gp=0.jpg', 'dasdasd', '23', '0', '0', '2018-06-12 10:42:17');
 
 -- ----------------------------
 -- Table structure for users
