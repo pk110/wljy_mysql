@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50528
 File Encoding         : 65001
 
-Date: 2018-06-24 11:29:52
+Date: 2018-06-29 18:02:17
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -63,13 +63,15 @@ CREATE TABLE `tb_comment` (
   `user_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '用户ID',
   `time` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of tb_comment
 -- ----------------------------
 INSERT INTO `tb_comment` VALUES ('1', '1', '3', '这篇文章好像还不错哦！', '1', '2018-07-12 00:00:00');
 INSERT INTO `tb_comment` VALUES ('2', '1', '3', '啦啦啦啦啦啦', '2', '2016-07-12 00:00:00');
+INSERT INTO `tb_comment` VALUES ('3', '1', '2', 'dadas', '1', '2018-06-14 14:01:13');
+INSERT INTO `tb_comment` VALUES ('4', '1', '2', '我是第二条', '2', '2018-06-13 16:59:22');
 
 -- ----------------------------
 -- Table structure for tb_liveslist
@@ -119,6 +121,28 @@ INSERT INTO `tb_newslist` VALUES ('3', '阿斯达', 'https://ss2.bdstatic.com/70
 INSERT INTO `tb_newslist` VALUES ('4', 'eqe', 'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=580198311,1767386831&fm=27&gp=0.jpg', 'add撒多阿萨德奥迪', 'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2688537749,3377948295&fm=27&gp=0.jpg', '2018-06-12 10:26:40', 'dasdadasdadasd', '3');
 
 -- ----------------------------
+-- Table structure for tb_newslist_detail
+-- ----------------------------
+DROP TABLE IF EXISTS `tb_newslist_detail`;
+CREATE TABLE `tb_newslist_detail` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `news_id` int(11) DEFAULT NULL COMMENT '文章id',
+  `user_id` int(11) DEFAULT NULL COMMENT '用户id',
+  `thumbsUp` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '点赞',
+  `attention` varchar(2550) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '关注',
+  `comments` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '评论',
+  PRIMARY KEY (`id`),
+  KEY `news_id` (`news_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+
+-- ----------------------------
+-- Records of tb_newslist_detail
+-- ----------------------------
+INSERT INTO `tb_newslist_detail` VALUES ('1', '1', '1', '100', '1000', '真的牛逼');
+INSERT INTO `tb_newslist_detail` VALUES ('2', '2', '2', '80', '9999', '哇 好棒啊');
+INSERT INTO `tb_newslist_detail` VALUES ('3', '1', '3', '20', '888', 'sghgjgjhgj');
+
+-- ----------------------------
 -- Table structure for tb_notice
 -- ----------------------------
 DROP TABLE IF EXISTS `tb_notice`;
@@ -155,7 +179,8 @@ CREATE TABLE `tb_reply` (
 INSERT INTO `tb_reply` VALUES ('1', '1', null, null, '你真的觉得这个文章不错嘛', '3', '1');
 INSERT INTO `tb_reply` VALUES ('2', '2', null, null, 'adasdadad', '3', '1');
 INSERT INTO `tb_reply` VALUES ('3', '2', null, null, '啊实打实大苏打', '2', '1');
-INSERT INTO `tb_reply` VALUES ('4', '1', null, null, '啊啊啊啊啊啊啊', '1', '2');
+INSERT INTO `tb_reply` VALUES ('4', '4', null, '2', '啊啊啊啊啊啊啊', '1', '2');
+INSERT INTO `tb_reply` VALUES ('5', '3', null, '2', '阿瑟东阿瑟东', '2', '3');
 
 -- ----------------------------
 -- Table structure for tb_users
@@ -183,23 +208,26 @@ INSERT INTO `tb_users` VALUES ('00000000003', '333', '0', '123', 'https://ss0.bd
 DROP TABLE IF EXISTS `tb_vedioeslist`;
 CREATE TABLE `tb_vedioeslist` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `author` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `headImg` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `image` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `title` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `people` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `money` float DEFAULT NULL,
   `specialMoney` float DEFAULT NULL,
-  `time` datetime DEFAULT NULL,
+  `time` datetime DEFAULT NULL COMMENT '视频地址',
+  `vedioes` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of tb_vedioeslist
 -- ----------------------------
-INSERT INTO `tb_vedioeslist` VALUES ('1', 'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3240918356,1823326004&fm=27&gp=0.jpg', '直播好看啊', '123213', '123', '0', '2018-09-05 00:00:00');
-INSERT INTO `tb_vedioeslist` VALUES ('2', 'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2402531608,4087629920&fm=27&gp=0.jpg', '美女直播不容错过', '12312', '177', '0', '2019-07-02 00:00:00');
-INSERT INTO `tb_vedioeslist` VALUES ('3', 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2558609194,1942934053&fm=27&gp=0.jpg', '动漫电影', '123', '126', '12', '2012-02-12 12:00:00');
-INSERT INTO `tb_vedioeslist` VALUES ('4', 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2433433105,3188102416&fm=27&gp=0.jpg', '哈哈哈', '6545', '453', '234', '2048-08-02 00:00:00');
-INSERT INTO `tb_vedioeslist` VALUES ('5', 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2558609194,1942934053&fm=27&gp=0.jpg', 'dasdasd', '23', '0', '0', '2018-06-12 10:42:17');
+INSERT INTO `tb_vedioeslist` VALUES ('1', '老邓', 'http://img4.duitang.com/uploads/item/201601/27/20160127121505_dPmN5.jpeg', 'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3240918356,1823326004&fm=27&gp=0.jpg', '直播好看啊', '123213', '123', '0', '2018-09-05 00:00:00', 'https://cdn.theguardian.tv/webM/2015/07/20/150716YesMen_synd_768k_vp8.webm');
+INSERT INTO `tb_vedioeslist` VALUES ('2', '张月', 'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=763290609,2651601375&fm=27&gp=0.jpg', 'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2402531608,4087629920&fm=27&gp=0.jpg', '美女直播不容错过', '12312', '177', '0', '2019-07-02 00:00:00', 'http://playertest.longtailvideo.com/adaptive/bipbop/gear4/prog_index.m3u8');
+INSERT INTO `tb_vedioeslist` VALUES ('3', '大司马', 'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2609245995,1929884886&fm=27&gp=0.jpg', 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2558609194,1942934053&fm=27&gp=0.jpg', '动漫电影', '123', '126', '12', '2012-02-12 12:00:00', 'http://fms.cntv.lxdns.com/live/flv/channel96.flv');
+INSERT INTO `tb_vedioeslist` VALUES ('4', '禾宝', 'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1668774059,1637121905&fm=27&gp=0.jpg', 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2433433105,3188102416&fm=27&gp=0.jpg', '哈哈哈', '6545', '453', '234', '2048-08-02 00:00:00', 'https://cdn.theguardian.tv/webM/2015/07/20/150716YesMen_synd_768k_vp8.webm');
+INSERT INTO `tb_vedioeslist` VALUES ('5', '禾苗', 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3942989250,3371488751&fm=27&gp=0.jpg', 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2558609194,1942934053&fm=27&gp=0.jpg', 'dasdasd', '23', '0', '0', '2018-06-12 10:42:17', 'http://fms.cntv.lxdns.com/live/flv/channel96.flv');
 
 -- ----------------------------
 -- Table structure for users
