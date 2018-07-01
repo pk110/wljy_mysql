@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50528
 File Encoding         : 65001
 
-Date: 2018-06-29 18:02:17
+Date: 2018-07-01 12:45:05
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -63,7 +63,7 @@ CREATE TABLE `tb_comment` (
   `user_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '用户ID',
   `time` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of tb_comment
@@ -72,6 +72,7 @@ INSERT INTO `tb_comment` VALUES ('1', '1', '3', '这篇文章好像还不错哦�
 INSERT INTO `tb_comment` VALUES ('2', '1', '3', '啦啦啦啦啦啦', '2', '2016-07-12 00:00:00');
 INSERT INTO `tb_comment` VALUES ('3', '1', '2', 'dadas', '1', '2018-06-14 14:01:13');
 INSERT INTO `tb_comment` VALUES ('4', '1', '2', '我是第二条', '2', '2018-06-13 16:59:22');
+INSERT INTO `tb_comment` VALUES ('6', '1', '3', '我这一条没人评论', '3', '2018-06-29 22:29:58');
 
 -- ----------------------------
 -- Table structure for tb_liveslist
