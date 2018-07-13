@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50528
 File Encoding         : 65001
 
-Date: 2018-07-06 18:04:37
+Date: 2018-07-13 18:08:53
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -68,7 +68,6 @@ CREATE TABLE `tb_comment` (
 -- ----------------------------
 -- Records of tb_comment
 -- ----------------------------
-INSERT INTO `tb_comment` VALUES ('1', '1', '3', '这篇文章好像还不错哦！', '1', '2018-07-12 00:00:00');
 INSERT INTO `tb_comment` VALUES ('2', '1', '3', '啦啦啦啦啦啦', '2', '2016-07-12 00:00:00');
 INSERT INTO `tb_comment` VALUES ('3', '1', '3', '我这一条没人评论', '3', '2018-06-29 22:29:58');
 INSERT INTO `tb_comment` VALUES ('4', '1', '2', 'deadadad', '3', '2018-07-11 14:42:27');
@@ -174,7 +173,7 @@ CREATE TABLE `tb_reply` (
   `user_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '回复用户id',
   `to_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '目标用户id',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- ----------------------------
 -- Records of tb_reply
@@ -188,7 +187,28 @@ INSERT INTO `tb_reply` VALUES ('12', '16', null, null, 'asdadaddfdf', '2', '1');
 INSERT INTO `tb_reply` VALUES ('14', '4', null, null, 'asdasd', '2', '2');
 INSERT INTO `tb_reply` VALUES ('15', '4', null, null, 'zxcxc', '2', '2');
 INSERT INTO `tb_reply` VALUES ('16', '5', null, null, '对3333', '2', '3');
-INSERT INTO `tb_reply` VALUES ('17', '4', null, null, '对333', '2', '3');
+INSERT INTO `tb_reply` VALUES ('24', '4', null, null, '12', '2', '3');
+INSERT INTO `tb_reply` VALUES ('29', '3', null, null, '111', '2', '3');
+INSERT INTO `tb_reply` VALUES ('33', '2', null, null, '111', '2', '3');
+
+-- ----------------------------
+-- Table structure for tb_userattention
+-- ----------------------------
+DROP TABLE IF EXISTS `tb_userattention`;
+CREATE TABLE `tb_userattention` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '用户名',
+  `to_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '不同类型对应的id',
+  `topic_type` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '哪一个类型的新闻还是视频',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of tb_userattention
+-- ----------------------------
+INSERT INTO `tb_userattention` VALUES ('1', '1', '1', '2');
+INSERT INTO `tb_userattention` VALUES ('2', '1', '2', '2');
+INSERT INTO `tb_userattention` VALUES ('3', '1', '1', '3');
 
 -- ----------------------------
 -- Table structure for tb_users
