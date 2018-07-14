@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50528
 File Encoding         : 65001
 
-Date: 2018-07-13 18:08:53
+Date: 2018-07-14 14:09:46
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -201,7 +201,7 @@ CREATE TABLE `tb_userattention` (
   `to_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '不同类型对应的id',
   `topic_type` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '哪一个类型的新闻还是视频',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of tb_userattention
@@ -209,6 +209,7 @@ CREATE TABLE `tb_userattention` (
 INSERT INTO `tb_userattention` VALUES ('1', '1', '1', '2');
 INSERT INTO `tb_userattention` VALUES ('2', '1', '2', '2');
 INSERT INTO `tb_userattention` VALUES ('3', '1', '1', '3');
+INSERT INTO `tb_userattention` VALUES ('4', '1', '4', '2');
 
 -- ----------------------------
 -- Table structure for tb_users
