@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50528
 File Encoding         : 65001
 
-Date: 2018-07-14 14:09:46
+Date: 2018-07-20 16:56:29
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -201,15 +201,14 @@ CREATE TABLE `tb_userattention` (
   `to_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '不同类型对应的id',
   `topic_type` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '哪一个类型的新闻还是视频',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of tb_userattention
 -- ----------------------------
 INSERT INTO `tb_userattention` VALUES ('1', '1', '1', '2');
-INSERT INTO `tb_userattention` VALUES ('2', '1', '2', '2');
 INSERT INTO `tb_userattention` VALUES ('3', '1', '1', '3');
-INSERT INTO `tb_userattention` VALUES ('4', '1', '4', '2');
+INSERT INTO `tb_userattention` VALUES ('4', '1', '2', '2');
 
 -- ----------------------------
 -- Table structure for tb_users
@@ -221,15 +220,16 @@ CREATE TABLE `tb_users` (
   `sex` varchar(255) COLLATE utf8_bin DEFAULT NULL,
   `password` varchar(255) COLLATE utf8_bin DEFAULT NULL,
   `userImg` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '用户头像',
+  `phone` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '手机号',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- ----------------------------
 -- Records of tb_users
 -- ----------------------------
-INSERT INTO `tb_users` VALUES ('00000000001', 'pk', '1', '123', 'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1163266585,1990963493&fm=27&gp=0.jpg');
-INSERT INTO `tb_users` VALUES ('00000000002', 'zy', '0', '123', 'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1226778478,3432630272&fm=27&gp=0.jpg');
-INSERT INTO `tb_users` VALUES ('00000000003', '333', '0', '123', 'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2265437237,3468716393&fm=27&gp=0.jpg');
+INSERT INTO `tb_users` VALUES ('00000000001', 'pk', '1', '123', 'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1163266585,1990963493&fm=27&gp=0.jpg', '13027106488');
+INSERT INTO `tb_users` VALUES ('00000000002', 'zy', '0', '123', 'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1226778478,3432630272&fm=27&gp=0.jpg', null);
+INSERT INTO `tb_users` VALUES ('00000000003', '333', '0', '123', 'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2265437237,3468716393&fm=27&gp=0.jpg', null);
 
 -- ----------------------------
 -- Table structure for tb_vedioeslist
