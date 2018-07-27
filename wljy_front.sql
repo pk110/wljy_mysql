@@ -10,46 +10,29 @@ Target Server Type    : MYSQL
 Target Server Version : 50528
 File Encoding         : 65001
 
-Date: 2018-07-21 10:40:03
+Date: 2018-07-27 17:38:26
 */
 
 SET FOREIGN_KEY_CHECKS=0;
 
 -- ----------------------------
--- Table structure for comment
+-- Table structure for tb_carts
 -- ----------------------------
-DROP TABLE IF EXISTS `comment`;
-CREATE TABLE `comment` (
+DROP TABLE IF EXISTS `tb_carts`;
+CREATE TABLE `tb_carts` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(100) COLLATE utf8_bin NOT NULL,
-  `comment_content` varchar(40) COLLATE utf8_bin NOT NULL,
-  `postid` varchar(40) COLLATE utf8_bin NOT NULL,
+  `user_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `to_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `topic_type` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
--- Records of comment
+-- Records of tb_carts
 -- ----------------------------
-
--- ----------------------------
--- Table structure for posts
--- ----------------------------
-DROP TABLE IF EXISTS `posts`;
-CREATE TABLE `posts` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(100) COLLATE utf8_bin NOT NULL,
-  `title` varchar(40) COLLATE utf8_bin NOT NULL,
-  `content` varchar(40) COLLATE utf8_bin NOT NULL,
-  `uid` varchar(40) COLLATE utf8_bin NOT NULL,
-  `moment` varchar(40) COLLATE utf8_bin NOT NULL,
-  `comments` varchar(40) COLLATE utf8_bin NOT NULL DEFAULT '0',
-  `pv` varchar(40) COLLATE utf8_bin NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
--- ----------------------------
--- Records of posts
--- ----------------------------
+INSERT INTO `tb_carts` VALUES ('2', '2', '1', '2');
+INSERT INTO `tb_carts` VALUES ('3', '2', '3', '2');
+INSERT INTO `tb_carts` VALUES ('4', '2', '4', '2');
 
 -- ----------------------------
 -- Table structure for tb_comment
@@ -63,7 +46,7 @@ CREATE TABLE `tb_comment` (
   `user_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '用户ID',
   `time` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of tb_comment
@@ -74,7 +57,6 @@ INSERT INTO `tb_comment` VALUES ('4', '1', '2', 'deadadad', '3', '2018-07-11 14:
 INSERT INTO `tb_comment` VALUES ('5', '1', '2', '是大多数', '2', '2018-07-11 14:44:12');
 INSERT INTO `tb_comment` VALUES ('16', '1', '2', 'asdad', '1', '2018-07-06 16:50:17');
 INSERT INTO `tb_comment` VALUES ('17', '2', '2', 'asdad', '1', '2018-07-06 16:50:58');
-INSERT INTO `tb_comment` VALUES ('18', '2', '2', '1111', '2', '2018-07-21 09:53:46');
 
 -- ----------------------------
 -- Table structure for tb_liveslist
@@ -159,7 +141,7 @@ CREATE TABLE `tb_notice` (
 -- ----------------------------
 -- Records of tb_notice
 -- ----------------------------
-INSERT INTO `tb_notice` VALUES ('1', '通告栏', 'gggggg');
+INSERT INTO `tb_notice` VALUES ('1', '通告栏', '预祝是大煞笔无主阿萨大大撒旦阿瑟东阿瑟东阿瑟东阿迪斯阿斯顿啊阿斯顿阿瑟东阿瑟东阿瑟东吖的 阿萨大大撒旦');
 
 -- ----------------------------
 -- Table structure for tb_reply
@@ -174,7 +156,7 @@ CREATE TABLE `tb_reply` (
   `user_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '回复用户id',
   `to_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '目标用户id',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- ----------------------------
 -- Records of tb_reply
@@ -191,11 +173,6 @@ INSERT INTO `tb_reply` VALUES ('16', '5', null, null, '对3333', '2', '3');
 INSERT INTO `tb_reply` VALUES ('24', '4', null, null, '12', '2', '3');
 INSERT INTO `tb_reply` VALUES ('29', '3', null, null, '111', '2', '3');
 INSERT INTO `tb_reply` VALUES ('33', '2', null, null, '111', '2', '3');
-INSERT INTO `tb_reply` VALUES ('34', '17', null, null, '啊啊啊啊', '2', '1');
-INSERT INTO `tb_reply` VALUES ('35', '17', null, null, '灌灌灌灌', '2', '1');
-INSERT INTO `tb_reply` VALUES ('36', '17', null, null, '小支持支持', '2', '1');
-INSERT INTO `tb_reply` VALUES ('37', '17', null, null, '啊啊啊', '2', '1');
-INSERT INTO `tb_reply` VALUES ('38', '17', null, null, '1111', '2', '1');
 
 -- ----------------------------
 -- Table structure for tb_userattention
@@ -207,7 +184,7 @@ CREATE TABLE `tb_userattention` (
   `to_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '不同类型对应的id',
   `topic_type` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '哪一个类型的新闻还是视频',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of tb_userattention
@@ -215,29 +192,28 @@ CREATE TABLE `tb_userattention` (
 INSERT INTO `tb_userattention` VALUES ('1', '1', '1', '2');
 INSERT INTO `tb_userattention` VALUES ('3', '1', '1', '3');
 INSERT INTO `tb_userattention` VALUES ('4', '1', '2', '2');
-INSERT INTO `tb_userattention` VALUES ('6', '2', '2', '2');
-INSERT INTO `tb_userattention` VALUES ('8', '2', '4', '2');
+INSERT INTO `tb_userattention` VALUES ('6', '2', '1', '2');
 
 -- ----------------------------
 -- Table structure for tb_users
 -- ----------------------------
 DROP TABLE IF EXISTS `tb_users`;
 CREATE TABLE `tb_users` (
-  `id` int(255) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8_bin DEFAULT NULL,
   `sex` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `password` varchar(255) COLLATE utf8_bin DEFAULT NULL,
   `userImg` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '用户头像',
   `phone` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '手机号',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- ----------------------------
 -- Records of tb_users
 -- ----------------------------
-INSERT INTO `tb_users` VALUES ('1', 'pk', '1', 'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1163266585,1990963493&fm=27&gp=0.jpg', '13027106488');
-INSERT INTO `tb_users` VALUES ('2', 'zy', '0', 'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1226778478,3432630272&fm=27&gp=0.jpg', null);
-INSERT INTO `tb_users` VALUES ('3', '333', '0', 'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2265437237,3468716393&fm=27&gp=0.jpg', null);
-INSERT INTO `tb_users` VALUES ('7', '麻蛋', '1', 'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=4089992707,3524618747&fm=27&gp=0.jpg', null);
+INSERT INTO `tb_users` VALUES ('1', 'pk', '1', '123', 'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1163266585,1990963493&fm=27&gp=0.jpg', '13027106488');
+INSERT INTO `tb_users` VALUES ('2', 'zy', '0', '123', 'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1226778478,3432630272&fm=27&gp=0.jpg', null);
+INSERT INTO `tb_users` VALUES ('3', '333', '0', '123', 'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2265437237,3468716393&fm=27&gp=0.jpg', null);
 
 -- ----------------------------
 -- Table structure for tb_vedioeslist
@@ -265,18 +241,3 @@ INSERT INTO `tb_vedioeslist` VALUES ('2', '张月', 'https://ss0.bdstatic.com/70
 INSERT INTO `tb_vedioeslist` VALUES ('3', '大司马', 'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2609245995,1929884886&fm=27&gp=0.jpg', 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2558609194,1942934053&fm=27&gp=0.jpg', '动漫电影', '123', '126', '12', '2012-02-12 12:00:00', 'http://fms.cntv.lxdns.com/live/flv/channel96.flv');
 INSERT INTO `tb_vedioeslist` VALUES ('4', '禾宝', 'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1668774059,1637121905&fm=27&gp=0.jpg', 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2433433105,3188102416&fm=27&gp=0.jpg', '哈哈哈', '6545', '453', '234', '2048-08-02 00:00:00', 'https://cdn.theguardian.tv/webM/2015/07/20/150716YesMen_synd_768k_vp8.webm');
 INSERT INTO `tb_vedioeslist` VALUES ('5', '禾苗', 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3942989250,3371488751&fm=27&gp=0.jpg', 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2558609194,1942934053&fm=27&gp=0.jpg', 'dasdasd', '23', '0', '0', '2018-06-12 10:42:17', 'http://fms.cntv.lxdns.com/live/flv/channel96.flv');
-
--- ----------------------------
--- Table structure for users
--- ----------------------------
-DROP TABLE IF EXISTS `users`;
-CREATE TABLE `users` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(100) COLLATE utf8_bin NOT NULL,
-  `pass` varchar(40) COLLATE utf8_bin NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
--- ----------------------------
--- Records of users
--- ----------------------------
