@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50528
 File Encoding         : 65001
 
-Date: 2018-07-27 17:38:26
+Date: 2018-07-28 12:02:42
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -193,6 +193,23 @@ INSERT INTO `tb_userattention` VALUES ('1', '1', '1', '2');
 INSERT INTO `tb_userattention` VALUES ('3', '1', '1', '3');
 INSERT INTO `tb_userattention` VALUES ('4', '1', '2', '2');
 INSERT INTO `tb_userattention` VALUES ('6', '2', '1', '2');
+
+-- ----------------------------
+-- Table structure for tb_userbuy
+-- ----------------------------
+DROP TABLE IF EXISTS `tb_userbuy`;
+CREATE TABLE `tb_userbuy` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `to_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `topic_type` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+-- ----------------------------
+-- Records of tb_userbuy
+-- ----------------------------
+INSERT INTO `tb_userbuy` VALUES ('1', '2', '1', '2');
 
 -- ----------------------------
 -- Table structure for tb_users
